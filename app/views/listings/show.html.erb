@@ -1,0 +1,44 @@
+<h1><%= @listing.title %></h1>
+<ul>
+  <li>Tool: <%= @tool.name %></li>
+  <li>Safety Level: <%= @tool.safety_level%></li>
+  <li>Portability: <%= @tool.portability%></li>
+  <li>Condition: <%= @tool.condition%></li>
+  <li>Notes: <%= @listing.notes %></li>
+  <li>Contact: <%= @owner.email%></li>
+  <li>Availability: <%= @tool.availability%></li>
+
+</ul>
+
+Average Review: <%= @tool.average_review %><br>
+<br>
+<% if @tool.reviews.count > 0%>
+Reviews:<br>
+  <% @tool.reviews.each do |review| %>
+  Rating:<%= review.rating %><br>
+  Content: <%= review.content%><br>
+  Worth borrowing? <%= review.worth_borrowing? %><br>
+
+  <% if @user.id == review.borrower_id %>
+  <%= link_to "Edit or delete", edit_review_path(review)%>
+  <% end %>
+  <br>
+  <br>
+  <% end %>
+  <br>
+  <% end %>
+
+<% if @user.id != @tool.lender_id %>
+  <%= button_to 'Review This Listing', new_review_path, :method => :get  %>
+
+  <%= form_tag rentals_path do %>
+  <%= hidden_field_tag 'listing_id', @listing.id %>
+  <%= submit_tag 'Rent This Tool' %>
+  <% end %>
+
+<% end %>
+<% if @user.id == @tool.lender_id %>
+<%= button_to 'Edit Listing', edit_listing_path(@listing), :method => :get  %>
+<%= button_to 'Delete Listing', listing_path(@listing), :method => :delete  %></p>
+<%= button_to 'Return to Tool', tool_path(@tool), :method => :get %>
+<% end %>

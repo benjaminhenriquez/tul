@@ -1,0 +1,41 @@
+<head>
+  <link rel="stylesheet" href="/css/listing_index.css" />
+</head>
+
+<h1>All Listings</h1>
+
+<h3>Search for a listing:</h3>
+
+<%= form_tag listings_path, :method => :get do %>
+  <%= label_tag "Search" %>
+  <%= text_field_tag :search %>
+  <%= submit_tag "Submit" %>
+<% end %>
+<br />
+<table>
+    <tr class="table-header-row">
+      <th class="col-md-4">Listing Title</th>
+      <th class="col-md-4">Tool</th>
+      <th class="col-md-4">Notes</th>
+    </tr>
+<% @listings.each do |listing| %>
+    <tr class="listing-row">
+      <td><%= link_to listing.title, listing_path(listing) %></td>
+      <td><%= listing.tool_name %></td>
+      <td><%= listing.notes %></td>
+    </tr>
+<%end%>
+</table>
+<br />
+
+<% if params[:search] != nil && params[:search].to_i != 0 %>
+  <iframe
+    width="600"
+    height="450"
+    frameborder="0" style="border:0"
+    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBYV-lwaMb8p0Hz04ILnsVSvHDZD2pZ7rc
+      &q=<%=params[:search]%>" allowfullscreen>
+  </iframe>
+  <% end %>
+
+<br />

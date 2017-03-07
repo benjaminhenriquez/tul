@@ -1,0 +1,30 @@
+<h3>Create a listing</h3>
+
+<% if @listing.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@listing.errors.count, "error") %>
+      prohibited this listing from being saved:
+    </h2>
+
+    <ul>
+    <% @listing.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%=form_for @listing do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br>
+  <%= f.label :notes %>
+  <%= f.text_area :notes %>
+  <br>
+  What tool do you want to list?
+  <br>
+  <%= f.select :tool_id, @user.your_tools_without_listings.map {|tool| [tool.name, tool.id]} %>
+
+  <%=f.submit%>
+<% end %>

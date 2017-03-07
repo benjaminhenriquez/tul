@@ -1,0 +1,61 @@
+h1{
+  font-family: 'Stardos Stencil', cursive;
+  text-align: center;
+  font-weight: bold;
+  position: absolute;
+  top: 10%;
+  width: 100%;
+  font-size: 1500%;
+}
+
+h3{
+  text-align: center;
+  font-weight: bold;
+  position: absolute;
+  top: 99%;
+  width: 100%;
+}
+
+h1 span{
+color: #333333;
+font: bold 'Stardos Stencil', cursive;
+letter-spacing: 3px;
+background: rgb(0, 0, 0); /* fallback color */
+background: rgba(0, 0, 0, 0.7);
+background-color: transparent;
+padding: 10px;
+}
+
+h3 span{
+color: white;
+font: bold 'Karla', sans-serif;
+letter-spacing: 3px;
+background: #333333; /* fallback color */
+background: #333333;
+background-color: semi transparent;
+padding: 10px;
+}
+
+a{
+  text-align: center;
+  font-weight: bold;
+  position: absolute;
+  top: 130%;
+  width: 100%;
+  font: bold 'Karla', sans-serif;
+  letter-spacing: 3px;
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.7);
+  background-color: transparent;
+  padding: 10px;
+}
+
+#welcome_page_photo{
+  max-height: 100%;
+  width: 100%;
+  opacity: .75;
+}
+
+
+font-family: 'Stardos Stencil', cursive;
+font-family: 'Karla', sans-serif;
